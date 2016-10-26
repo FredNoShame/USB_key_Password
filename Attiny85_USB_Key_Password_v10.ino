@@ -1,6 +1,6 @@
 /*
- * ATTINY85 avec potentiomètre et écriture sur port USB comme un clavier.
- * Envoi les données sur Excel ou Notepad
+ * ATTINY85 avec potentiomÃ¨tre et Ã©criture sur port USB comme un clavier.
+ * Envoi les donnÃ©es sur Excel ou Notepad
  * 
  *     //All pins are capable of Digital output, though P5 is 3 V at HIGH instead of 5 V
     pinMode(0, OUTPUT); //0 is P0, 1 is P1, 2 is P2, etc. - unlike the analog inputs, for digital outputs the pin number matches.
@@ -42,11 +42,11 @@ int const longAppli = 10;
 int const longProfil = 30;
 int const longPWD = 14;
 int const nbAppli = 6;
-int const sensorCat = 1024 / nbAppli; // nb de catégories
+int const sensorCat = 1024 / nbAppli; // nb de catÃ©gories
 int index = 0; // Index pour l'application, le profil et le pwd
 
-// chaines de caractères pour conversion clavier US en FR
-char *chaineEntree = "azertyuiopqsdfghjklm<wxcvbn,;:!AZERTYUIOPQSDFGHJKLM>WXCVBN?./1234567890$-=+&é()_'µ°¨£$çà";
+// chaines de caractÃ¨res pour conversion clavier US en FR
+char *chaineEntree = "azertyuiopqsdfghjklm<wxcvbn,;:!AZERTYUIOPQSDFGHJKLM>WXCVBN?./1234567890$-=+&Ã©()_'ÂµÂ°Â¨Â£$Ã§Ã ";
 char *chaineSortie = "qwertyuiopasdfghjkl; zxcvbnm,./QWERTYUIOPASDFGHJKL: ZXCVBNM<>!@#$%^&*()]6=+125-8        ";
 
 int zz;
@@ -67,21 +67,21 @@ char appli[nbAppli][longAppli] = {
 };
 
 char profil[nbAppli][longProfil] = {
-  "xxxx.xxxx@gmail.com",
-  "yyyyyyyy",
-  "zzzzzzzz",
+  "xxxxxxxx@gmail.com",
+  "xxxxxxxx",
+  "xxxxxxxx",
   "xxxxxxxx",
   "xxxxxxxx",
   "xxxxxxxx@gmail.com"
 };
 
 char password[nbAppli][longPWD] = {
-  "xxxxxxxxx",
-  "xxxxxxxxx",
-  "xxxxxxxxx",
-  "xxxxxxxxx",
-  "xxxxxxxxx",
-  "xxxxxxxxx"
+  "xxxxxxxx",
+  "xxxxxxxx",
+  "xxxxxxxx",
+  "xxxxxxxx",
+  "xxxxxxxx",
+  "xxxxxxxx"
 };
 
 
@@ -138,7 +138,7 @@ void loop() {
       DigiKeyboard.sendKeyStroke(KEY_ENTER);
     } else {
     */
-    DigiKeyboard.sendKeyStroke(74, MOD_SHIFT_LEFT); // Sélectionne toute la ligne depuis le début
+    DigiKeyboard.sendKeyStroke(74, MOD_SHIFT_LEFT); // SÃ©lectionne toute la ligne depuis le dÃ©but
     DigiKeyboard.sendKeyStroke(42); // efface la ligne
     printStr(profil[index]);
     DigiKeyboard.sendKeyStroke(43); // TAB
@@ -170,7 +170,7 @@ void sendChaine1(char chaine[110]) {
     for(int i=0; i<len; i++) {
       pst = strchr(chaineEntree, transChaine[i]);
       if(pst != NULL) {
-        // caractère trouvé
+        // caractÃ¨re trouvÃ©
         posCar = pst - chaineEntree;
         transChaine[i] = chaineSortie[posCar];
       } 
@@ -230,4 +230,6 @@ void printStr(char *str) {
     c = str[ i ];
   }
 }
+
+
 
